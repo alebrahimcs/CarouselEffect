@@ -25,6 +25,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         isFirstTimeTransform = true
         collectionView.delegate = self
         collectionView.dataSource = self
+        let nibFile = UINib(nibName: "Cell", bundle: nil)
+        collectionView.registerNib(nibFile, forCellWithReuseIdentifier: "Cell")
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -44,7 +46,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return 15
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
         
         //////////////////////////////////////////////////////////////////
         if indexPath.row == 0 && isFirstTimeTransform { //prevent to load scaling transform on the first cell for the first time only
